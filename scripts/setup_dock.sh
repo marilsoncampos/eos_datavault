@@ -1,5 +1,4 @@
-#!/bin/bash 
-
+#!/bin/bash -x 
 
 #echo "Starting nodeos and keosd" 
 eos_02_network
@@ -8,7 +7,11 @@ eos_03_kboot
 eos_04_endp
 eos_04_logs
 eos_04_wallet
-eos_05_alias
+. eos_05_alias
+
+
+echo "Waiting servers ... " 
+sleep 3 
 
 echo "Initializing wallet" 
 eos_create_wallet
@@ -22,7 +25,7 @@ eos_list_wallet
 
 # Docker
 echo "Creating eosdatavault user and registering contract" 
-eos_create_account eosdatavault EOS7rMZfsA4yucaLyuEzAiBrhKj221qABT5zuKqtsq1Q1a1iVxe8M EOS7rMZfsA4yucaLyuEzAiBrhKj221qABT5zuKqtsq1Q1a1iVxe8
+eos_create_account eosdatavault EOS7rMZfsA4yucaLyuEzAiBrhKj221qABT5zuKqtsq1Q1a1iVxe8M EOS7rMZfsA4yucaLyuEzAiBrhKj221qABT5zuKqtsq1Q1a1iVxe8M
 eos_set_contract eosdatavault ../contract/ eosdatavault
 
 echo "Creating user1"
