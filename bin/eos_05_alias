@@ -1,0 +1,9 @@
+#!/bin/bash
+
+docker network inspect eosdev > /tmp/docker_cfg.txt
+
+export KEOSD_IP=$(cat /tmp/docker_cfg.txt | grep -A 5 ': "keosd",' | grep 'IPv4Address' | cut -d'"' -f 4 | cut -d'/' -f 1)
+echo "Found ip: $KEOSD_IP"
+
+echo "alias cleos='docker exec -it nodeos /opt/eosio/bin/cleos --url http://127.0.0.1:8888 --wallet-url http://${KEOSD_IP}:9876'"
+alias cleos="docker exec -it nodeos /opt/eosio/bin/cleos --url http://127.0.0.1:8888 --wallet-url http://${KEOSD_IP}:9876"

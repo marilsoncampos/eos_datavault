@@ -1,0 +1,5 @@
+#!/bin/bash 
+#echo "pass:"
+#cat /tmp/key.wallet
+
+docker exec -i nodeos /opt/eosio/bin/cleos --url http://127.0.0.1:8888 --wallet-url http://${KEOSD_IP}:9876  wallet unlock < /tmp/key.wallet 

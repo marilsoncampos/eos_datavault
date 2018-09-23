@@ -1,0 +1,4 @@
+#!/bin/bash -x
+
+docker exec -it nodeos /opt/eosio/bin/cleos --url http://127.0.0.1:8888 --wallet-url http://${KEOSD_IP}:9876  wallet create --to-console | tail -n 1 | cut -d'"' -f 2 > /tmp/key.wallet
+

@@ -1,0 +1,42 @@
+#!/bin/bash 
+
+
+#echo "Starting nodeos and keosd" 
+eos_02_network
+eos_03_boot
+eos_03_kboot
+eos_04_endp
+eos_04_logs
+eos_04_wallet
+eos_05_alias
+
+echo "Initializing wallet" 
+eos_create_wallet
+eos_unlock_wallet
+
+echo "Importing keys" 
+eos_import_wallet 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
+eos_import_wallet 5KEFmzRkaWXZh2XF3SkPenzsGMrfdJvDGapmjBbKwZrGfU2ZWxa
+
+eos_list_wallet
+
+# Docker
+echo "Creating eosdatavault user and registering contract" 
+eos_create_account eosdatavault EOS7rMZfsA4yucaLyuEzAiBrhKj221qABT5zuKqtsq1Q1a1iVxe8M EOS7rMZfsA4yucaLyuEzAiBrhKj221qABT5zuKqtsq1Q1a1iVxe8
+eos_set_contract eosdatavault ../contract/ eosdatavault
+
+echo "Creating user1"
+eos_create_account user1 EOS7oWRkoquFbJstwms4bMUM2LB1qQ9kG8mZ7FjxEMFcCAre3miGu EOS6pXfwZ976YHeNiRgWewX3ZTmmyTD5ej8RkWoQDQXw4J63zNnov
+eos_import_wallet 5JDM42HnuB1oVNWmdkcLPozEvMztyqnkVLdJDcqfD38NVht68ck
+
+
+echo "Creating user2"
+eos_create_account user2 EOS7oWRkoquFbJstwms4bMUM2LB1qQ9kG8mZ7FjxEMFcCAre3miGu EOS6AcefxUgbQQeK7hXRTyAn2gxgZmsRyKZLVFeUnWrY1p4oMo2Ee
+eos_import_wallet 5J4sU5tBujAq6xdkQLuYohKPBFuTj4Er9fCtpBYmibrchNCe4L7
+
+
+echo "Creating user3"
+eos_create_account user3 EOS7oWRkoquFbJstwms4bMUM2LB1qQ9kG8mZ7FjxEMFcCAre3miGu EOS6ZXD8W9ttK3PzypRpGmE7Y2pQq151k9jjEQc4LQq1rivk2Fpu1
+eos_import_wallet 5KDSPKGxwnrhDWyczJW7MYs6HM2YaYorri1kN8gY4yx4FGDRSXf
+
+

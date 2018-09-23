@@ -1,0 +1,6 @@
+#!/bin/bash 
+ACC_NAME=$1
+K1=$2
+K2=$3
+docker exec -i nodeos /opt/eosio/bin/cleos --url http://127.0.0.1:8888 --wallet-url http://${KEOSD_IP}:9876 create account eosio $ACC_NAME $K1 $K2
+

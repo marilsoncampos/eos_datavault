@@ -1,0 +1,8 @@
+#!/bin/bash 
+CONT_NAME=$1
+CONT_DIR=$2
+CONT_PASS=$3
+
+docker cp ${CONT_DIR} nodeos:/tmp/contract
+docker exec -i nodeos /opt/eosio/bin/cleos --url http://127.0.0.1:8888 --wallet-url http://${KEOSD_IP}:9876 set contract ${CONT_NAME} /tmp/contract/ -p ${CONT_PASS} 
+

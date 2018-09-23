@@ -1,0 +1,9 @@
+#!/bin/bash -x
+
+echo "cmd:"
+CMD='cleos --wallet-url http://127.0.0.1:9876 wallet list keys'
+echo ${CMD}
+
+docker exec -it keosd ${CMD}
+
+

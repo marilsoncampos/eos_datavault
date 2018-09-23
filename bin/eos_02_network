@@ -1,0 +1,8 @@
+#!/bin/bash -x
+. check_e_network
+if ($? -eq 0); then
+  echo 'Network already created'
+  exit
+fi
+
+docker network create eosdev
